@@ -1,0 +1,1371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTH HeavenToHell</title>
+    <style>
+      body {
+        background-color: #202020;
+        font-family:
+          "Open Sans",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen-Sans,
+          Ubuntu,
+          Cantarell,
+          "Helvetica Neue",
+          Helvetica,
+          Arial,
+          sans-serif;
+      }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11" rel="stylesheet" />
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+      
+
+      
+
+      // JavaScript equivalent code with variables
+
+
+      
+      function showCustomMessageBox(options, title, text, value, timeout) {
+        return new Promise((resolve) => {
+          // Define default options for the message box
+          let defaultOptions = {
+            title: title || "", // Default title is empty
+            text: text || "Press OK to continue.", // Default text if not provided
+            showCancelButton: false, // Default is to not show Cancel button
+            showDenyButton: false, // Default is to not show Deny button
+            confirmButtonText: "OK", // Default text for OK button
+            focusConfirm: true, // Default focus on OK button
+          };
+
+          let numOriginal = value;
+
+          let num = numOriginal;
+
+          let done1 = 0;
+
+          let done2 = 0;
+
+          let done3 = 0;
+
+          let AIndex = 0;
+
+          for (AIndex = 1; AIndex <= 1; AIndex++) {
+            // this is about if you add always on top in a msgbox it will be removed in js cuz its kinda useless...
+            // becouse if you like adding always on top in ahk in js we dont realy do it so yeah
+            if (num >= 262144) {
+              num = num - 262144;
+              numOriginal = numOriginal - 262144;
+            }
+
+            if (num >= 256 && num < 500) {
+              num = num - 256;
+
+              done3 = 256;
+            }
+
+            if (num >= 512) {
+              num = num - 512;
+
+              done3 = 512;
+            }
+
+            if (num == 0) {
+              done1 = 0;
+
+              break;
+            }
+
+            if (num <= 6) {
+              done1 = num;
+
+              break;
+            }
+
+            if (num >= 64 && num < 64 * 2) {
+              done2 = 64;
+
+              if (num == 64) {
+                done1 = 0;
+
+                break;
+              } else {
+                done1 = num - 64;
+
+                break;
+              }
+            }
+
+            if (num >= 48 && num < 63) {
+              done2 = 48;
+
+              if (num == 48) {
+                done1 = 0;
+
+                break;
+              } else {
+                done1 = num - 48;
+
+                break;
+              }
+            }
+
+            if (num >= 32 && num < 47) {
+              done2 = 32;
+
+              if (num == 32) {
+                done1 = 0;
+
+                break;
+              } else {
+                done1 = num - 32;
+
+                break;
+              }
+            }
+
+            if (num >= 16 && num < 30) {
+              done2 = 16;
+
+              if (num == 16) {
+                done1 = 0;
+
+                break;
+              } else {
+                done1 = num - 16;
+
+                break;
+              }
+            }
+          }
+
+          let doneAdded = done1 + done2 + done3;
+
+          if (doneAdded !== numOriginal) {
+            // displayMessage("The calc was wrong!");
+          } else {
+            // displayMessage("num was: " + numOriginal + "\ndone1: " + done1 + "\ndone2: " + done2 + "\ndone3: " + done3);
+          }
+
+          // Parse the value to determine the options for the message box
+          if (done1 === 1) defaultOptions.showCancelButton = true; // OK/Cancel in ahk but here it will show Ok/Cancel wiat its same haha
+
+          // not gonna work if you can make it work i will appreciate
+          //   if (done1 === 2) {
+          //     defaultOptions.showCancelButton = true; // Abort/Retry/Ignore
+          //     defaultOptions.showDenyButton = true;
+          //   }
+          if (done1 === 3) {
+            defaultOptions.showCancelButton = true; // Yes/No/Cancel in ahk but here it will show Ok/No/Cancel
+            defaultOptions.showDenyButton = true;
+          }
+          if (done1 === 4) {
+            // defaultOptions.showCancelButton = true;
+            defaultOptions.showDenyButton = true; // Yes/No in ahk but here it will show Ok/No
+          }
+          if (done1 === 5) {
+            defaultOptions.showCancelButton = true; // Retry/Cancel in ahk but here it will show Ok/Cancel tip you can write in the Msgbox press ok to retry
+          }
+          // not gonna work if you can make it work i will appreciate
+          //   if (done1 === 6) {
+          //     defaultOptions.showCancelButton = true; // Cancel/Try Again/Continue
+          //     defaultOptions.showDenyButton = true;
+          //   }
+
+          if (done2 === 16) defaultOptions.icon = "error"; // Icon Hand (stop/error)
+          if (done2 === 32) defaultOptions.icon = "question"; // Icon Question
+          if (done2 === 48) defaultOptions.icon = "warning"; // Icon Exclamation
+          if (done2 === 64) defaultOptions.icon = "info"; // Icon Asterisk (info)
+
+          if (done3 === 256) defaultOptions.focusDeny = true; // Makes the 3rd button the default
+          if (done3 === 512) defaultOptions.focusCancel = true; // Makes the 2nd button the default
+
+          // Set timeout if provided
+          if (timeout) {
+            defaultOptions.timer = timeout * 1000; // Convert timeout to milliseconds
+          }
+
+          // Merge default options with provided options
+          Object.assign(defaultOptions, options);
+
+          // Display the message box with the constructed options
+          Swal.fire(defaultOptions).then((result) => {
+            if (result.isConfirmed) {
+              resolve("OK");
+            } else if (result.isDenied) {
+              resolve("No");
+            } else {
+              resolve("Cancel");
+            }
+          });
+        });
+      }
+
+
+      function BuildInVars(varName) {
+        switch (varName) {
+          case "A_ScreenWidth":
+            // Return screen width
+            return window.innerWidth;
+          case "A_LastKey":
+            // Return screen width
+            return getLastKeyPressed();
+          case "A_ScreenHeight":
+            // Return screen height
+            return window.innerHeight;
+          case "A_TimeIdle":
+            // Return time idle
+            return A_TimeIdle();
+          case "A_TickCount":
+            // Return tick count in milliseconds
+            return A_TickCount();
+          case "A_Now":
+            // Return current local timestamp
+            return new Date().toLocaleString();
+          case "A_YYYY":
+            // Return current year
+            return new Date().getFullYear();
+          case "A_MM":
+            // Return current month
+            return (new Date().getMonth() + 1).toString().padStart(2, "0");
+          case "A_DD":
+            // Return current day
+            return new Date().getDate().toString().padStart(2, "0");
+          case "A_MMMM":
+            // Return full month name
+            return new Date().toLocaleDateString(undefined, { month: "long" });
+          case "A_MMM":
+            // Return short month name
+            return new Date().toLocaleDateString(undefined, { month: "short" });
+          case "A_DDDD":
+            // Return full day name
+            return new Date().toLocaleDateString(undefined, { weekday: "long" });
+          case "A_DDD":
+            // Return short day name
+            return new Date().toLocaleDateString(undefined, { weekday: "short" });
+          case "A_Hour":
+            // Return current hour
+            return new Date().getHours().toString().padStart(2, "0");
+          case "A_Min":
+            // Return current minute
+            return new Date().getMinutes().toString().padStart(2, "0");
+          case "A_Sec":
+            // Return current second
+            return new Date().getSeconds().toString().padStart(2, "0");
+          case "A_Space":
+            // Return space character
+            return " ";
+          case "A_Tab":
+            // Return tab character
+            return "\t";
+
+          default:
+            // Handle unknown variable names
+            return null;
+        }
+      }
+
+
+      // Function to simulate Sleep
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+
+      // Function to generate a random number between min (inclusive) and max (inclusive)
+      function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+
+      async function ParseInt(num) {
+        if (num === null) {
+          return null;
+        }
+
+        num = num.trim();
+        num++;
+        num--;
+
+        return num;
+      }
+
+      // Object to store timer intervals for different functions
+      const timerIntervals = {};
+
+      async function SetTimer(func, timeOrOnOff) {
+        if (typeof func !== "function" || typeof timeOrOnOff === "undefined") {
+          console.error("Invalid arguments. Please provide a valid function and time/On/Off state.");
+          return;
+        }
+
+        if (typeof timeOrOnOff === "number") {
+          // If a number is provided, set the timer to that time in milliseconds and start it.
+          func.interval = timeOrOnOff; // Store the interval within the function
+          func(); // Call the function initially
+          func.intervalId = setInterval(func, timeOrOnOff);
+          timerIntervals[func] = func.intervalId; // Store the interval ID
+        } else if (timeOrOnOff === "On") {
+          // If 'On' is provided, start the timer if it's not already running.
+          if (!func.intervalId && func.interval) {
+            func(); // Call the function initially
+            func.intervalId = setInterval(func, func.interval); // Start with the stored interval
+            timerIntervals[func] = func.intervalId; // Store the interval ID
+          } else {
+            console.error("Timer is not set. Please provide a valid interval.");
+          }
+        } else if (timeOrOnOff === "Off") {
+          // If 'Off' is provided, clear the timer if it's running.
+          clearInterval(func.intervalId);
+          func.intervalId = null;
+          delete timerIntervals[func]; // Remove the interval ID from storage
+        } else {
+          console.error("Invalid time/On/Off state. Please provide a valid time in milliseconds or 'On'/'Off'.");
+        }
+      }
+
+
+      function GuiControl(action, id, param1, param2, param3, param4) {
+        const element = document.getElementById(id);
+        if (element) {
+          if (action === "move") {
+            // Set position and size
+            element.style.left = param1 + "px";
+            element.style.top = param2 + "px";
+            element.style.width = param3 + "px";
+            element.style.height = param4 + "px";
+          } else if (action === "focus" && (element instanceof HTMLInputElement || element instanceof HTMLElement)) {
+            // Focus on the element
+            element.focus();
+          } else if (action === "text") {
+            // Set new text content
+            element.textContent = param1;
+          } else if (action === "hide") {
+            // Hide the element
+            element.style.display = "none";
+          } else if (action === "show") {
+            // Show the element
+            element.style.display = "";
+          } else if (action === "enable") {
+            // Enable the element
+            element.disabled = false;
+          } else if (action === "disable") {
+            // Disable the element
+            element.disabled = true;
+          } else if (action === "font") {
+            // Set font size
+            element.style.fontSize = param1 + "px";
+          } else if (action === "color") {
+            // Set color
+            element.style.color = param1;
+          }
+        }
+      }
+
+
+
+
+      let lastInputTime = Date.now(); // Initialize with current timestamp
+      let startTimestamp = Date.now(); // Initialize with current timestamp
+
+      // Event listener to track user activity
+      function resetIdleTimer() {
+          lastInputTime = Date.now(); // Update last input time
+      }
+
+      document.addEventListener('mousemove', resetIdleTimer);
+      document.addEventListener('keypress', resetIdleTimer);
+
+      // Function to calculate time since last input event
+      function A_TimeIdle() {
+          return Date.now() - lastInputTime; // Calculate time difference
+      }
+
+      // Function to calculate tick count in milliseconds
+      function A_TickCount() {
+          return Date.now() - startTimestamp;
+      }
+
+
+
+
+
+
+      let keyState = {}; // Object to track key states
+
+      // Function to handle keydown events
+      function handleKeyDown(event) {
+        keyState[event.key] = true; // Set key state to true when pressed
+      }
+
+      // Function to handle keyup events
+      function handleKeyUp(event) {
+        keyState[event.key] = false; // Set key state to false when released
+      }
+
+      // Add event listeners for keydown and keyup events
+      document.addEventListener("keydown", handleKeyDown);
+      document.addEventListener("keyup", handleKeyUp);
+
+      // Function to get the state of a key dynamically
+      function GetKeyState(key, DownOrUp) {
+        return DownOrUp === "D" ? keyState[key] : !keyState[key];
+      }
+
+      let lastKeyPressed = "";
+
+      function trackLastKeyPressed() {
+        document.addEventListener("keydown", function (event) {
+          lastKeyPressed = event.key;
+          // console.log(lastKeyPressed);
+        });
+      }
+
+      function getLastKeyPressed() {
+        return lastKeyPressed;
+      }
+
+      // Call the trackLastKeyPressed function to start tracking key presses
+      trackLastKeyPressed();
+
+      // Now you can call getLastKeyPressed() whenever you need to get the last key pressed
+
+
+
+      // Single async function to structure the entire script
+      async function runScript() {
+        // Declare and assign a variable
+let variables = {
+  A_Index: null,
+  A_LoopField: null,
+  acceleration: null,
+  accelerationMax: null,
+  accelerationNum: null,
+  characters: null,
+  Collision: null,
+  GuiControl: null,
+  jump: null,
+  platformH1: null,
+  platformH2: null,
+  platformH3: null,
+  platformH4: null,
+  platformH5: null,
+  platformH: null,
+  platforms: null,
+  platformW1: null,
+  platformW2: null,
+  platformW3: null,
+  platformW4: null,
+  platformW5: null,
+  platformW: null,
+  platformX1: null,
+  platformX2: null,
+  platformX3: null,
+  platformX4: null,
+  platformX5: null,
+  platformX: null,
+  platformY1: null,
+  platformY2: null,
+  platformY3: null,
+  platformY4: null,
+  platformY5: null,
+  platformY: null,
+  PlayerH: null,
+  PlayerW: null,
+  PlayerX: null,
+  PlayerY: null,
+  room: null,
+  roomNum: null,
+  Speed: null,
+  winH: null,
+  winW: null,
+};
+
+let funcs = {
+  Collision: Collision,
+}
+
+
+
+let Gui1 = {};
+Gui1 = document.createElement("div");
+
+let Gui2 = {};
+Gui2 = document.createElement("div");
+
+
+
+
+
+
+variables.winW =  BuildInVars("A_ScreenWidth") - 50;
+
+
+variables.winH =  BuildInVars("A_ScreenHeight") - 50;
+
+
+
+
+if ( BuildInVars("A_ScreenWidth") < 1707 )
+
+{
+
+await showCustomMessageBox({}," ", "Your Screen is too small try pressing Ctrl+Numpad Minus and press F5 ", 0, 0)
+
+return
+
+}
+
+
+
+if ( BuildInVars("A_ScreenWidth") > 1800 )
+
+{
+
+await showCustomMessageBox({}," ", "Your Screen is too big try pressing Ctrl+Numpad Plus and press F5 ", 0, 0)
+
+return
+
+}
+
+
+
+
+
+
+
+Gui1.style.position = "absolute";
+Gui1.style.width = "" + variables.winW + "px"; // Set the width
+Gui1.style.height = "" + variables.winH + "px"; // Set the height
+Gui1.style.backgroundColor = "#121212";
+Gui1.style.color = "white";
+Gui1.style.fontSize = "15px";
+Gui1.style.padding = "0px";
+Gui1.style.border = "2px solid white";
+
+// Calculate center position
+Gui1.style.left = (window.innerWidth - parseInt(Gui1.style.width)) / 2 + "px";
+Gui1.style.top = (window.innerHeight - parseInt(Gui1.style.height)) / 2 + "px";
+
+
+
+
+
+
+document.body.appendChild(Gui1) // Append the GUI window to the body
+
+
+
+
+variables.roomNum =  1;
+
+
+variables.room =  "Room " + variables.roomNum;
+
+
+
+
+
+
+
+
+Gui1roomText = document.createElement("div")
+Gui1roomText.id = "Gui1" + "roomText"; // Set ID for referencing
+Gui1roomText.textContent = "" + variables.room + ""
+Gui1roomText.style.color = "#white"
+Gui1roomText.style.fontSize = "20px"; // Set font size
+Gui1roomText.style.position = "absolute"; // Set position to absolute
+Gui1roomText.style.left = "5px"; // Set initial x position
+Gui1roomText.style.top = "5px"; // Set initial y position
+Gui1roomText.style.width = "" + variables.winW + "px"; // Set width
+Gui1roomText.style.height = "30px"; // Set height
+Gui1.appendChild(Gui1roomText)
+
+
+
+
+
+variables.PlayerX =  80 - 25;
+
+
+variables.PlayerY =  variables.winH - 100 - 50 - 25;
+
+
+variables.PlayerW =  50;
+
+
+variables.PlayerH =  50;
+
+
+
+
+variables.Speed =  2;
+
+
+variables.acceleration =  0;
+
+
+variables.accelerationMax =  3;
+
+
+variables.accelerationNum =  0.008;
+
+
+
+
+variables.jump =  0;
+
+
+
+
+variables.platforms =  5;
+
+
+
+
+variables.platformX1 =  10;
+
+
+variables.platformY1 =  variables.winH - 100;
+
+
+variables.platformW1 =  150;
+
+
+variables.platformH1 =  10;
+
+
+
+
+variables.platformYran = getRandomNumber(101, 250)
+
+
+
+variables.platformX2 =  450;
+
+
+variables.platformY2 =  variables.winH - variables.platformYran;
+
+
+variables.platformW2 =  150;
+
+
+variables.platformH2 =  10;
+
+
+
+
+variables.platformYran = getRandomNumber(130, 270)
+
+
+
+variables.platformX3 =  800;
+
+
+variables.platformY3 =  variables.winH - variables.platformYran;
+
+
+variables.platformW3 =  150;
+
+
+variables.platformH3 =  10;
+
+
+
+
+variables.platformYran = getRandomNumber(160, 300)
+
+
+
+variables.platformX4 =  1200;
+
+
+variables.platformY4 =  variables.winH - variables.platformYran;
+
+
+variables.platformW4 =  150;
+
+
+variables.platformH4 =  10;
+
+
+
+
+variables.platformYran = getRandomNumber(190, 330)
+
+
+
+variables.platformX5 =  1500;
+
+
+variables.platformY5 =  variables.winH - variables.platformYran;
+
+
+variables.platformW5 =  150;
+
+
+variables.platformH5 =  10;
+
+
+
+
+
+
+
+
+
+
+Gui1platform1 = document.createElement("button")
+Gui1platform1.id = "Gui1" + "platform1"; // Set ID for referencing
+Gui1platform1.textContent = "";
+Gui1platform1.style.fontSize = "12px"; // Set font size
+Gui1platform1.style.position = "absolute"; // Set position to absolute
+Gui1platform1.style.left = "" + variables.platformX1 + "px"; // Set initial x position
+Gui1platform1.style.top = "" + variables.platformY1 + "px"; // Set initial y position
+Gui1platform1.style.width = "" + variables.platformW1 + "px"; // Set width
+Gui1platform1.style.height = "" + variables.platformH1 + "px"; // Set height
+Gui1.appendChild(Gui1platform1)
+
+
+
+
+Gui1platform2 = document.createElement("button")
+Gui1platform2.id = "Gui1" + "platform2"; // Set ID for referencing
+Gui1platform2.textContent = "";
+Gui1platform2.style.fontSize = "12px"; // Set font size
+Gui1platform2.style.position = "absolute"; // Set position to absolute
+Gui1platform2.style.left = "" + variables.platformX2 + "px"; // Set initial x position
+Gui1platform2.style.top = "" + variables.platformY2 + "px"; // Set initial y position
+Gui1platform2.style.width = "" + variables.platformW2 + "px"; // Set width
+Gui1platform2.style.height = "" + variables.platformH2 + "px"; // Set height
+Gui1.appendChild(Gui1platform2)
+
+
+
+
+Gui1platform3 = document.createElement("button")
+Gui1platform3.id = "Gui1" + "platform3"; // Set ID for referencing
+Gui1platform3.textContent = "";
+Gui1platform3.style.fontSize = "12px"; // Set font size
+Gui1platform3.style.position = "absolute"; // Set position to absolute
+Gui1platform3.style.left = "" + variables.platformX3 + "px"; // Set initial x position
+Gui1platform3.style.top = "" + variables.platformY3 + "px"; // Set initial y position
+Gui1platform3.style.width = "" + variables.platformW3 + "px"; // Set width
+Gui1platform3.style.height = "" + variables.platformH3 + "px"; // Set height
+Gui1.appendChild(Gui1platform3)
+
+
+
+
+Gui1platform4 = document.createElement("button")
+Gui1platform4.id = "Gui1" + "platform4"; // Set ID for referencing
+Gui1platform4.textContent = "";
+Gui1platform4.style.fontSize = "12px"; // Set font size
+Gui1platform4.style.position = "absolute"; // Set position to absolute
+Gui1platform4.style.left = "" + variables.platformX4 + "px"; // Set initial x position
+Gui1platform4.style.top = "" + variables.platformY4 + "px"; // Set initial y position
+Gui1platform4.style.width = "" + variables.platformW4 + "px"; // Set width
+Gui1platform4.style.height = "" + variables.platformH4 + "px"; // Set height
+Gui1.appendChild(Gui1platform4)
+
+
+
+
+Gui1platform5 = document.createElement("button")
+Gui1platform5.id = "Gui1" + "platform5"; // Set ID for referencing
+Gui1platform5.textContent = "";
+Gui1platform5.style.fontSize = "12px"; // Set font size
+Gui1platform5.style.position = "absolute"; // Set position to absolute
+Gui1platform5.style.left = "" + variables.platformX5 + "px"; // Set initial x position
+Gui1platform5.style.top = "" + variables.platformY5 + "px"; // Set initial y position
+Gui1platform5.style.width = "" + variables.platformW5 + "px"; // Set width
+Gui1platform5.style.height = "" + variables.platformH5 + "px"; // Set height
+Gui1.appendChild(Gui1platform5)
+
+
+
+
+
+
+
+
+Gui1Player = document.createElement("button")
+Gui1Player.id = "Gui1" + "Player"; // Set ID for referencing
+Gui1Player.textContent = "Player";
+Gui1Player.style.fontSize = "12px"; // Set font size
+Gui1Player.style.position = "absolute"; // Set position to absolute
+Gui1Player.style.left = "" + variables.PlayerX + "px"; // Set initial x position
+Gui1Player.style.top = "" + variables.PlayerY + "px"; // Set initial y position
+Gui1Player.style.width = "" + variables.PlayerW + "px"; // Set width
+Gui1Player.style.height = "" + variables.PlayerH + "px"; // Set height
+Gui1.appendChild(Gui1Player)
+
+
+
+SetTimer(code, 1)
+
+SetTimer(gravity, 1)
+
+return
+
+
+
+async function gravity(A_GuiControl)
+{
+
+
+
+if (!( await Collision ( ) ))
+
+{
+
+
+
+if (!( ( await GetKeyState ( "ArrowUp", "D" )  ||  await GetKeyState ( "ArrowDown", "D" ) ) ))
+
+{
+
+variables.PlayerY =  variables.PlayerY + 2;
+
+
+}
+
+
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+}
+
+}
+
+
+
+
+
+async function code(A_GuiControl)
+{
+
+
+
+if (!( await Collision ( ) ))
+
+{
+
+
+
+
+
+if ( ( await GetKeyState ( "ArrowUp", "D" ) ) && ! ( await Collision ( ) ) )
+
+{
+
+if ( variables.jump == 1 )
+
+{
+
+variables.jump =  0;
+
+
+
+for (/* Normal Loop */ variables.A_Index1 = 1; variables.A_Index1 <= 20; variables.A_Index1++)
+
+{
+
+if (!( await Collision ( ) ))
+
+{
+
+await sleep(10)
+
+variables.PlayerY =  variables.PlayerY -  ( variables.Speed + variables.acceleration + variables.A_Index1 )
+
+
+if (!( variables.acceleration > variables.accelerationMax ))
+
+{
+
+variables.acceleration =  variables.acceleration + variables.accelerationNum;
+
+
+}
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+}
+
+else
+
+{
+
+variables.PlayerY =  variables.PlayerY + 10;
+
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+break
+
+}
+
+}
+
+//OutputDebug, moving
+
+}
+
+else
+
+{
+
+variables.PlayerY =  variables.PlayerY + 2;
+
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+}
+
+}
+
+if ( ( await GetKeyState ( "ArrowDown", "D" ) ) && ! ( await Collision ( ) ) )
+
+{
+
+variables.PlayerY =  variables.PlayerY +  ( variables.Speed + variables.acceleration )
+
+
+if (!( variables.acceleration > variables.accelerationMax ))
+
+{
+
+variables.acceleration =  variables.acceleration + variables.accelerationNum;
+
+
+}
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+//OutputDebug, moving
+
+}
+
+if ( ( await GetKeyState ( "ArrowLeft", "D" ) ) && ! ( await Collision ( ) ) )
+
+{
+
+variables.PlayerX =  variables.PlayerX -  ( variables.Speed + variables.acceleration )
+
+
+if (!( variables.acceleration > variables.accelerationMax ))
+
+{
+
+variables.acceleration =  variables.acceleration + variables.accelerationNum;
+
+
+}
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+//OutputDebug, moving
+
+}
+
+if ( ( await GetKeyState ( "ArrowRight", "D" ) ) && ! ( await Collision ( ) ) )
+
+{
+
+variables.PlayerX =  variables.PlayerX +  ( variables.Speed + variables.acceleration )
+
+
+if (!( variables.acceleration > variables.accelerationMax ))
+
+{
+
+variables.acceleration =  variables.acceleration + variables.accelerationNum;
+
+
+}
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+//OutputDebug, moving
+
+}
+
+if ( ( await GetKeyState ( "ArrowUp", "U" )  &&  await GetKeyState ( "ArrowDown", "U" )  &&  await GetKeyState ( "ArrowLeft", "U" )  &&  await GetKeyState ( "ArrowRight", "U" ) ) )
+
+{
+
+// not moving
+
+//OutputDebug, no moving
+
+variables.acceleration =  0;
+
+
+}
+
+}
+
+
+
+
+
+}
+
+
+
+async function Collision()
+
+{
+
+
+
+
+
+
+
+
+
+if ( variables.PlayerX <= 1 )
+
+{
+
+variables.PlayerX =  variables.PlayerX + 1;
+
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+return true
+
+}
+
+if ( variables.PlayerX >= variables.winW - 51 )
+
+{
+
+
+
+
+
+if ( variables.PlayerY > variables.platformY5 )
+
+{
+
+SetTimer(code, "Off")
+
+SetTimer(gravity, "Off")
+
+
+
+
+
+Gui2Static2 = document.createElement("div")
+Gui2Static2.id = "Gui2" + "Static" + "2"; // Set ID for referencing
+Gui2Static2.textContent = "You Loose";
+Gui2Static2.style.color = "#white"
+Gui2Static2.style.fontSize = "30px"; // Set font size
+Gui2Static2.style.position = "absolute"; // Set position to absolute
+Gui2Static2.style.left = "180px"; // Set initial x position
+Gui2Static2.style.top = "100px"; // Set initial y position
+Gui2Static2.style.width = "200px"; // Set width
+Gui2Static2.style.height = "50px"; // Set height
+Gui2.appendChild(Gui2Static2)
+
+
+
+
+Gui2.style.position = "absolute";
+Gui2.style.width = "500px"; // Set the width
+Gui2.style.height = "250px"; // Set the height
+Gui2.style.backgroundColor = "#420606";
+Gui2.style.color = "white";
+Gui2.style.fontSize = "15px";
+Gui2.style.padding = "0px";
+Gui2.style.border = "2px solid white";
+
+// Calculate center position
+Gui2.style.left = (window.innerWidth - parseInt(Gui2.style.width)) / 2 + "px";
+Gui2.style.top = (window.innerHeight - parseInt(Gui2.style.height)) / 2 + "px";
+
+
+
+
+
+
+document.body.appendChild(Gui2) // Append the GUI window to the body
+
+
+return
+
+}
+
+
+
+variables.platformYran = getRandomNumber(101, 250)
+
+
+
+variables.platformX2 =  450;
+
+
+variables.platformY2 =  variables.winH - variables.platformYran;
+
+
+variables.platformW2 =  150;
+
+
+variables.platformH2 =  10;
+
+
+
+
+variables.platformYran = getRandomNumber(130, 270)
+
+
+
+variables.platformX3 =  800;
+
+
+variables.platformY3 =  variables.winH - variables.platformYran;
+
+
+variables.platformW3 =  150;
+
+
+variables.platformH3 =  10;
+
+
+
+
+variables.platformYran = getRandomNumber(160, 300)
+
+
+
+variables.platformX4 =  1200;
+
+
+variables.platformY4 =  variables.winH - variables.platformYran;
+
+
+variables.platformW4 =  150;
+
+
+variables.platformH4 =  10;
+
+
+
+
+variables.platformYran = getRandomNumber(190, 330)
+
+
+
+variables.platformX5 =  1500;
+
+
+variables.platformY5 =  variables.winH - variables.platformYran;
+
+
+variables.platformW5 =  150;
+
+
+variables.platformH5 =  10;
+
+
+
+
+
+
+GuiControl("move", "Gui1platform2", variables.platformX2, variables.platformY2, variables.platformW2, variables.platformH2)
+
+GuiControl("move", "Gui1platform3", variables.platformX3, variables.platformY3, variables.platformW3, variables.platformH3)
+
+GuiControl("move", "Gui1platform4", variables.platformX4, variables.platformY4, variables.platformW4, variables.platformH4)
+
+GuiControl("move", "Gui1platform5", variables.platformX5, variables.platformY5, variables.platformW5, variables.platformH5)
+
+
+
+
+
+
+
+variables.roomNum++
+
+variables.room =  "Room " + variables.roomNum;
+
+
+GuiControl("text", "Gui1roomText", variables.room)
+
+variables.acceleration =  0;
+
+
+variables.PlayerX =  80 - 25;
+
+
+variables.PlayerY =  variables.winH - 100 - 50 - 25;
+
+
+
+
+
+
+
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+return true
+
+}
+
+if ( variables.PlayerY >= variables.winH - 51 )
+
+{
+
+
+
+SetTimer(code, "Off")
+
+SetTimer(gravity, "Off")
+
+
+
+
+
+Gui2Static3 = document.createElement("div")
+Gui2Static3.id = "Gui2" + "Static" + "3"; // Set ID for referencing
+Gui2Static3.textContent = "You Loose";
+Gui2Static3.style.color = "#white"
+Gui2Static3.style.fontSize = "30px"; // Set font size
+Gui2Static3.style.position = "absolute"; // Set position to absolute
+Gui2Static3.style.left = "180px"; // Set initial x position
+Gui2Static3.style.top = "100px"; // Set initial y position
+Gui2Static3.style.width = "200px"; // Set width
+Gui2Static3.style.height = "50px"; // Set height
+Gui2.appendChild(Gui2Static3)
+
+
+
+
+Gui2.style.position = "absolute";
+Gui2.style.width = "500px"; // Set the width
+Gui2.style.height = "250px"; // Set the height
+Gui2.style.backgroundColor = "#420606";
+Gui2.style.color = "white";
+Gui2.style.fontSize = "15px";
+Gui2.style.padding = "0px";
+Gui2.style.border = "2px solid white";
+
+// Calculate center position
+Gui2.style.left = (window.innerWidth - parseInt(Gui2.style.width)) / 2 + "px";
+Gui2.style.top = (window.innerHeight - parseInt(Gui2.style.height)) / 2 + "px";
+
+
+
+
+
+
+document.body.appendChild(Gui2) // Append the GUI window to the body
+
+
+return
+
+
+
+
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+return true
+
+}
+
+if ( variables.PlayerY <= 1 )
+
+{
+
+variables.PlayerY =  variables.PlayerY + 1;
+
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+return true
+
+}
+
+
+
+// Loop through each platform and check for collision
+
+
+for (/* Normal Loop */ variables.A_Index2 = 1; variables.A_Index2 <= variables.platforms; variables.A_Index2++)
+
+{
+
+variables.platformX =  variables["platformX" + variables.A_Index2];
+
+
+variables.platformY =  variables["platformY" + variables.A_Index2];
+
+
+variables.platformW =  variables["platformW" + variables.A_Index2];
+
+
+variables.platformH =  variables["platformH" + variables.A_Index2];
+
+
+
+
+if ( ( variables.PlayerY >= variables.platformY - variables.PlayerH  &&  variables.PlayerY <= variables.platformY + variables.platformH  &&  variables.PlayerX + variables.PlayerW >= variables.platformX  &&  variables.PlayerX <= variables.platformX + variables.platformW ) )
+
+{
+
+variables.PlayerY =  variables.PlayerY - 1;
+
+
+variables.jump =  1;
+
+
+GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
+
+return true
+
+}
+
+}
+
+
+
+// if no Collision then return false
+
+
+
+return false
+
+}
+
+
+
+
+
+
+
+
+
+
+ }
+
+      // Call the async function to start the script
+      runScript();
+    </script>
+  </body>
+</html>

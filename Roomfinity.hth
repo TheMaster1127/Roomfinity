@@ -1,0 +1,297 @@
+winW := A_ScreenWidth - 50
+winH := A_ScreenHeight - 50
+
+if (A_ScreenWidth < 1707)
+{
+MsgBox, Your Screen is too small try pressing Ctrl+Numpad Minus and press F5
+return
+}
+
+if (A_ScreenWidth > 1800)
+{
+MsgBox, Your Screen is too big try pressing Ctrl+Numpad Plus and press F5
+return
+}
+
+
+Gui, Show, w%winW% h%winH%
+
+roomNum := 1
+room := "Room " . roomNum
+
+Gui, Color, 121212
+Gui, Font, s20
+Gui, Add, Text, cWhite x5 y5 w%winW% h30 vroomText, %room%
+Gui, Font, s12
+
+PlayerX := 80 - 25
+PlayerY := winH - 100 - 50 - 25
+PlayerW := 50
+PlayerH := 50
+
+Speed := 2
+acceleration := 0
+accelerationMax := 3
+accelerationNum := 0.008
+
+jump := 0
+
+platforms := 5
+
+platformX1 := 10
+platformY1 := winH - 100
+platformW1 := 150
+platformH1 := 10
+
+Random, platformYran, 101, 250
+
+platformX2 := 450
+platformY2 := winH - platformYran
+platformW2 := 150
+platformH2 := 10
+
+Random, platformYran, 130, 270
+
+platformX3 := 800
+platformY3 := winH - platformYran
+platformW3 := 150
+platformH3 := 10
+
+Random, platformYran, 160, 300
+
+platformX4 := 1200
+platformY4 := winH - platformYran
+platformW4 := 150
+platformH4 := 10
+
+Random, platformYran, 190, 330
+
+platformX5 := 1500
+platformY5 := winH - platformYran
+platformW5 := 150
+platformH5 := 10
+
+
+
+Gui, Add, Button, x%platformX1% y%platformY1% w%platformW1% h%platformH1% vplatform1
+Gui, Add, Button, x%platformX2% y%platformY2% w%platformW2% h%platformH2% vplatform2
+Gui, Add, Button, x%platformX3% y%platformY3% w%platformW3% h%platformH3% vplatform3
+Gui, Add, Button, x%platformX4% y%platformY4% w%platformW4% h%platformH4% vplatform4
+Gui, Add, Button, x%platformX5% y%platformY5% w%platformW5% h%platformH5% vplatform5
+
+
+Gui, Add, Button, x%PlayerX% y%PlayerY% w%PlayerW% h%PlayerH% vPlayer, Player
+Gui, Font, s15
+SetTimer, code, 1
+SetTimer, gravity, 1
+return
+
+gravity:
+
+if !(Collision())
+{
+
+if !((GetKeyState("Up", "D")) or (GetKeyState("Down", "D")))
+{
+PlayerY := PlayerY + 2
+}
+
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+}
+Return
+
+
+code:
+
+if !(Collision())
+{
+
+
+if ((GetKeyState("Up", "D")) && !(Collision()))
+{
+if (jump = 1)
+{
+jump := 0
+Loop, 20
+{
+if !(Collision())
+{
+Sleep, 10
+PlayerY := PlayerY - (Speed + acceleration + A_Index)
+if !(acceleration > accelerationMax)
+{
+acceleration := acceleration + accelerationNum
+}
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+}
+else
+{
+PlayerY := PlayerY + 10
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+break
+}
+}
+;OutputDebug, moving
+}
+else
+{
+PlayerY := PlayerY + 2
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+}
+}
+else if ((GetKeyState("Down", "D")) && !(Collision()))
+{
+PlayerY := PlayerY + (Speed + acceleration)
+if !(acceleration > accelerationMax)
+{
+acceleration := acceleration + accelerationNum
+}
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+;OutputDebug, moving
+}
+else if ((GetKeyState("Left", "D")) && !(Collision()))
+{
+PlayerX := PlayerX - (Speed + acceleration)
+if !(acceleration > accelerationMax)
+{
+acceleration := acceleration + accelerationNum
+}
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+;OutputDebug, moving
+}
+else if ((GetKeyState("Right", "D")) && !(Collision()))
+{
+PlayerX := PlayerX + (Speed + acceleration)
+if !(acceleration > accelerationMax)
+{
+acceleration := acceleration + accelerationNum
+}
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+;OutputDebug, moving
+}
+else if ((GetKeyState("Up", "U")) && (GetKeyState("Down", "U")) && (GetKeyState("Left", "U")) && (GetKeyState("Right", "U")))
+{
+; not moving
+;OutputDebug, no moving
+acceleration := 0
+}
+}
+
+
+Return
+
+Collision()
+{
+
+if (PlayerX <= 1)
+{
+PlayerX := PlayerX + 1
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+return true
+}
+else if (PlayerX >= winW - 51)
+{
+
+
+if (PlayerY > platformY5)
+{
+SetTimer, code, Off
+SetTimer, gravity, Off
+Gui 2: Color, 420606
+Gui 2: Font, s30
+Gui 2: Add, Text, cWhite x180 y100 w200 h50, You Loose
+Gui 2: Show, w500 h250
+return
+}
+
+Random, platformYran, 101, 250
+
+platformX2 := 450
+platformY2 := winH - platformYran
+platformW2 := 150
+platformH2 := 10
+
+Random, platformYran, 130, 270
+
+platformX3 := 800
+platformY3 := winH - platformYran
+platformW3 := 150
+platformH3 := 10
+
+Random, platformYran, 160, 300
+
+platformX4 := 1200
+platformY4 := winH - platformYran
+platformW4 := 150
+platformH4 := 10
+
+Random, platformYran, 190, 330
+
+platformX5 := 1500
+platformY5 := winH - platformYran
+platformW5 := 150
+platformH5 := 10
+
+
+GuiControl, Move, platform2, x%platformX2% y%platformY2% w%platformW2% h%platformH2%
+GuiControl, Move, platform3, x%platformX3% y%platformY3% w%platformW3% h%platformH3%
+GuiControl, Move, platform4, x%platformX4% y%platformY4% w%platformW4% h%platformH4%
+GuiControl, Move, platform5, x%platformX5% y%platformY5% w%platformW5% h%platformH5%
+
+
+
+roomNum++
+room := "Room " . roomNum
+GuiControl, Text, roomText, %room%
+acceleration := 0
+PlayerX := 80 - 25
+PlayerY := winH - 100 - 50 - 25
+
+
+
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+return true
+}
+else if (PlayerY >= winH - 51)
+{
+
+SetTimer, code, Off
+SetTimer, gravity, Off
+Gui 2: Color, 420606
+Gui 2: Font, s30
+Gui 2: Add, Text, cWhite x180 y100 w200 h50, You Loose
+Gui 2: Show, w500 h250
+return
+
+
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+return true
+}
+else if (PlayerY <= 1)
+{
+PlayerY := PlayerY + 1
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+return true
+}
+
+; Loop through each platform and check for collision
+Loop, %platforms%
+{
+platformX := platformX%A_Index%
+platformY := platformY%A_Index%
+platformW := platformW%A_Index%
+platformH := platformH%A_Index%
+
+if ((PlayerY >= platformY - PlayerH) && (PlayerY <= platformY + platformH) && (PlayerX + PlayerW >= platformX) && (PlayerX <= platformX + platformW))
+{
+PlayerY := PlayerY - 1
+jump := 1
+GuiControl, Move, Player, x%PlayerX% y%PlayerY%
+return true
+}
+}
+
+; if no Collision then return false
+
+return false
+}
