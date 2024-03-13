@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,19 +7,7 @@
     <style>
       body {
         background-color: #202020;
-        font-family:
-          "Open Sans",
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          Oxygen-Sans,
-          Ubuntu,
-          Cantarell,
-          "Helvetica Neue",
-          Helvetica,
-          Arial,
-          sans-serif;
+        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
       }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11" rel="stylesheet" />
@@ -27,15 +15,8 @@
   <body>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-
-      
-
-      
-
       // JavaScript equivalent code with variables
 
-
-      
       function showCustomMessageBox(options, title, text, value, timeout) {
         return new Promise((resolve) => {
           // Define default options for the message box
@@ -211,7 +192,6 @@
         });
       }
 
-
       function BuildInVars(varName) {
         switch (varName) {
           case "A_ScreenWidth":
@@ -243,16 +223,24 @@
             return new Date().getDate().toString().padStart(2, "0");
           case "A_MMMM":
             // Return full month name
-            return new Date().toLocaleDateString(undefined, { month: "long" });
+            return new Date().toLocaleDateString(undefined, {
+              month: "long",
+            });
           case "A_MMM":
             // Return short month name
-            return new Date().toLocaleDateString(undefined, { month: "short" });
+            return new Date().toLocaleDateString(undefined, {
+              month: "short",
+            });
           case "A_DDDD":
             // Return full day name
-            return new Date().toLocaleDateString(undefined, { weekday: "long" });
+            return new Date().toLocaleDateString(undefined, {
+              weekday: "long",
+            });
           case "A_DDD":
             // Return short day name
-            return new Date().toLocaleDateString(undefined, { weekday: "short" });
+            return new Date().toLocaleDateString(undefined, {
+              weekday: "short",
+            });
           case "A_Hour":
             // Return current hour
             return new Date().getHours().toString().padStart(2, "0");
@@ -275,18 +263,15 @@
         }
       }
 
-
       // Function to simulate Sleep
       function sleep(ms) {
         return new Promise((resolve) => setTimeout(resolve, ms));
       }
 
-
       // Function to generate a random number between min (inclusive) and max (inclusive)
       function getRandomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
       }
-
 
       async function ParseInt(num) {
         if (num === null) {
@@ -334,7 +319,6 @@
         }
       }
 
-
       function GuiControl(action, id, param1, param2, param3, param4) {
         const element = document.getElementById(id);
         if (element) {
@@ -372,34 +356,26 @@
         }
       }
 
-
-
-
       let lastInputTime = Date.now(); // Initialize with current timestamp
       let startTimestamp = Date.now(); // Initialize with current timestamp
 
       // Event listener to track user activity
       function resetIdleTimer() {
-          lastInputTime = Date.now(); // Update last input time
+        lastInputTime = Date.now(); // Update last input time
       }
 
-      document.addEventListener('mousemove', resetIdleTimer);
-      document.addEventListener('keypress', resetIdleTimer);
+      document.addEventListener("mousemove", resetIdleTimer);
+      document.addEventListener("keypress", resetIdleTimer);
 
       // Function to calculate time since last input event
       function A_TimeIdle() {
-          return Date.now() - lastInputTime; // Calculate time difference
+        return Date.now() - lastInputTime; // Calculate time difference
       }
 
       // Function to calculate tick count in milliseconds
       function A_TickCount() {
-          return Date.now() - startTimestamp;
+        return Date.now() - startTimestamp;
       }
-
-
-
-
-
 
       let keyState = {}; // Object to track key states
 
@@ -440,929 +416,526 @@
 
       // Now you can call getLastKeyPressed() whenever you need to get the last key pressed
 
-
-
       // Single async function to structure the entire script
       async function runScript() {
         // Declare and assign a variable
-let variables = {
-  A_Index: null,
-  A_LoopField: null,
-  acceleration: null,
-  accelerationMax: null,
-  accelerationNum: null,
-  characters: null,
-  Collision: null,
-  GuiControl: null,
-  jump: null,
-  platformH1: null,
-  platformH2: null,
-  platformH3: null,
-  platformH4: null,
-  platformH5: null,
-  platformH: null,
-  platforms: null,
-  platformW1: null,
-  platformW2: null,
-  platformW3: null,
-  platformW4: null,
-  platformW5: null,
-  platformW: null,
-  platformX1: null,
-  platformX2: null,
-  platformX3: null,
-  platformX4: null,
-  platformX5: null,
-  platformX: null,
-  platformY1: null,
-  platformY2: null,
-  platformY3: null,
-  platformY4: null,
-  platformY5: null,
-  platformY: null,
-  PlayerH: null,
-  PlayerW: null,
-  PlayerX: null,
-  PlayerY: null,
-  room: null,
-  roomNum: null,
-  Speed: null,
-  winH: null,
-  winW: null,
-};
+        let variables = {
+          A_Index: null,
+          A_LoopField: null,
+          acceleration: null,
+          accelerationMax: null,
+          accelerationNum: null,
+          characters: null,
+          Collision: null,
+          GuiControl: null,
+          jump: null,
+          platformH1: null,
+          platformH2: null,
+          platformH3: null,
+          platformH4: null,
+          platformH5: null,
+          platformH: null,
+          platforms: null,
+          platformW1: null,
+          platformW2: null,
+          platformW3: null,
+          platformW4: null,
+          platformW5: null,
+          platformW: null,
+          platformX1: null,
+          platformX2: null,
+          platformX3: null,
+          platformX4: null,
+          platformX5: null,
+          platformX: null,
+          platformY1: null,
+          platformY2: null,
+          platformY3: null,
+          platformY4: null,
+          platformY5: null,
+          platformY: null,
+          PlayerH: null,
+          PlayerW: null,
+          PlayerX: null,
+          PlayerY: null,
+          room: null,
+          roomNum: null,
+          Speed: null,
+          winH: null,
+          winW: null,
+        };
 
-let funcs = {
-  Collision: Collision,
-}
+        let funcs = {
+          Collision: Collision,
+        };
 
+        let Gui1 = {};
+        Gui1 = document.createElement("div");
 
+        let Gui2 = {};
+        Gui2 = document.createElement("div");
 
-let Gui1 = {};
-Gui1 = document.createElement("div");
+        variables.winW = BuildInVars("A_ScreenWidth") - 50;
 
-let Gui2 = {};
-Gui2 = document.createElement("div");
+        variables.winH = BuildInVars("A_ScreenHeight") - 50;
 
+        if (BuildInVars("A_ScreenWidth") < 1707) {
+          await showCustomMessageBox({}, " ", "Your Screen is too small try pressing Ctrl+Numpad Minus and press F5 ", 0, 0);
 
+          return;
+        }
 
+        if (BuildInVars("A_ScreenWidth") > 1800) {
+          await showCustomMessageBox({}, " ", "Your Screen is too big try pressing Ctrl+Numpad Plus and press F5 ", 0, 0);
 
+          return;
+        }
 
+        Gui1.style.position = "absolute";
+        Gui1.style.width = "" + variables.winW + "px"; // Set the width
+        Gui1.style.height = "" + variables.winH + "px"; // Set the height
+        Gui1.style.backgroundColor = "#121212";
+        Gui1.style.color = "white";
+        Gui1.style.fontSize = "15px";
+        Gui1.style.padding = "0px";
+        Gui1.style.border = "2px solid white";
 
-variables.winW =  BuildInVars("A_ScreenWidth") - 50;
+        // Calculate center position
+        Gui1.style.left = (window.innerWidth - parseInt(Gui1.style.width)) / 2 + "px";
+        Gui1.style.top = (window.innerHeight - parseInt(Gui1.style.height)) / 2 + "px";
 
+        document.body.appendChild(Gui1); // Append the GUI window to the body
 
-variables.winH =  BuildInVars("A_ScreenHeight") - 50;
+        variables.roomNum = 1;
 
+        variables.room = "Room " + variables.roomNum;
 
+        Gui1roomText = document.createElement("div");
+        Gui1roomText.id = "Gui1" + "roomText"; // Set ID for referencing
+        Gui1roomText.textContent = "" + variables.room + "";
+        Gui1roomText.style.color = "#white";
+        Gui1roomText.style.fontSize = "20px"; // Set font size
+        Gui1roomText.style.position = "absolute"; // Set position to absolute
+        Gui1roomText.style.left = "5px"; // Set initial x position
+        Gui1roomText.style.top = "5px"; // Set initial y position
+        Gui1roomText.style.width = "" + variables.winW + "px"; // Set width
+        Gui1roomText.style.height = "30px"; // Set height
+        Gui1.appendChild(Gui1roomText);
 
+        variables.PlayerX = 80 - 25;
 
-if ( BuildInVars("A_ScreenWidth") < 1707 )
+        variables.PlayerY = variables.winH - 100 - 50 - 25;
 
-{
+        variables.PlayerW = 50;
 
-await showCustomMessageBox({}," ", "Your Screen is too small try pressing Ctrl+Numpad Minus and press F5 ", 0, 0)
+        variables.PlayerH = 50;
 
-return
+        variables.Speed = 2;
 
-}
+        variables.acceleration = 0;
 
+        variables.accelerationMax = 3;
 
+        variables.accelerationNum = 0.008;
 
-if ( BuildInVars("A_ScreenWidth") > 1800 )
+        variables.jump = 0;
 
-{
+        variables.platforms = 5;
 
-await showCustomMessageBox({}," ", "Your Screen is too big try pressing Ctrl+Numpad Plus and press F5 ", 0, 0)
+        variables.platformX1 = 10;
 
-return
+        variables.platformY1 = variables.winH - 100;
 
-}
+        variables.platformW1 = 150;
 
+        variables.platformH1 = 10;
 
+        variables.platformYran = getRandomNumber(101, 250);
 
+        variables.platformX2 = 450;
 
+        variables.platformY2 = variables.winH - variables.platformYran;
 
+        variables.platformW2 = 150;
 
+        variables.platformH2 = 10;
 
-Gui1.style.position = "absolute";
-Gui1.style.width = "" + variables.winW + "px"; // Set the width
-Gui1.style.height = "" + variables.winH + "px"; // Set the height
-Gui1.style.backgroundColor = "#121212";
-Gui1.style.color = "white";
-Gui1.style.fontSize = "15px";
-Gui1.style.padding = "0px";
-Gui1.style.border = "2px solid white";
+        variables.platformYran = getRandomNumber(130, 270);
 
-// Calculate center position
-Gui1.style.left = (window.innerWidth - parseInt(Gui1.style.width)) / 2 + "px";
-Gui1.style.top = (window.innerHeight - parseInt(Gui1.style.height)) / 2 + "px";
+        variables.platformX3 = 800;
 
+        variables.platformY3 = variables.winH - variables.platformYran;
 
+        variables.platformW3 = 150;
 
+        variables.platformH3 = 10;
 
+        variables.platformYran = getRandomNumber(160, 300);
 
+        variables.platformX4 = 1200;
 
-document.body.appendChild(Gui1) // Append the GUI window to the body
+        variables.platformY4 = variables.winH - variables.platformYran;
 
+        variables.platformW4 = 150;
 
+        variables.platformH4 = 10;
 
+        variables.platformYran = getRandomNumber(190, 330);
 
-variables.roomNum =  1;
+        variables.platformX5 = 1500;
 
+        variables.platformY5 = variables.winH - variables.platformYran;
 
-variables.room =  "Room " + variables.roomNum;
+        variables.platformW5 = 150;
 
+        variables.platformH5 = 10;
 
+        Gui1platform1 = document.createElement("button");
+        Gui1platform1.id = "Gui1" + "platform1"; // Set ID for referencing
+        Gui1platform1.textContent = "";
+        Gui1platform1.style.fontSize = "12px"; // Set font size
+        Gui1platform1.style.position = "absolute"; // Set position to absolute
+        Gui1platform1.style.left = "" + variables.platformX1 + "px"; // Set initial x position
+        Gui1platform1.style.top = "" + variables.platformY1 + "px"; // Set initial y position
+        Gui1platform1.style.width = "" + variables.platformW1 + "px"; // Set width
+        Gui1platform1.style.height = "" + variables.platformH1 + "px"; // Set height
+        Gui1.appendChild(Gui1platform1);
 
+        Gui1platform2 = document.createElement("button");
+        Gui1platform2.id = "Gui1" + "platform2"; // Set ID for referencing
+        Gui1platform2.textContent = "";
+        Gui1platform2.style.fontSize = "12px"; // Set font size
+        Gui1platform2.style.position = "absolute"; // Set position to absolute
+        Gui1platform2.style.left = "" + variables.platformX2 + "px"; // Set initial x position
+        Gui1platform2.style.top = "" + variables.platformY2 + "px"; // Set initial y position
+        Gui1platform2.style.width = "" + variables.platformW2 + "px"; // Set width
+        Gui1platform2.style.height = "" + variables.platformH2 + "px"; // Set height
+        Gui1.appendChild(Gui1platform2);
 
+        Gui1platform3 = document.createElement("button");
+        Gui1platform3.id = "Gui1" + "platform3"; // Set ID for referencing
+        Gui1platform3.textContent = "";
+        Gui1platform3.style.fontSize = "12px"; // Set font size
+        Gui1platform3.style.position = "absolute"; // Set position to absolute
+        Gui1platform3.style.left = "" + variables.platformX3 + "px"; // Set initial x position
+        Gui1platform3.style.top = "" + variables.platformY3 + "px"; // Set initial y position
+        Gui1platform3.style.width = "" + variables.platformW3 + "px"; // Set width
+        Gui1platform3.style.height = "" + variables.platformH3 + "px"; // Set height
+        Gui1.appendChild(Gui1platform3);
 
+        Gui1platform4 = document.createElement("button");
+        Gui1platform4.id = "Gui1" + "platform4"; // Set ID for referencing
+        Gui1platform4.textContent = "";
+        Gui1platform4.style.fontSize = "12px"; // Set font size
+        Gui1platform4.style.position = "absolute"; // Set position to absolute
+        Gui1platform4.style.left = "" + variables.platformX4 + "px"; // Set initial x position
+        Gui1platform4.style.top = "" + variables.platformY4 + "px"; // Set initial y position
+        Gui1platform4.style.width = "" + variables.platformW4 + "px"; // Set width
+        Gui1platform4.style.height = "" + variables.platformH4 + "px"; // Set height
+        Gui1.appendChild(Gui1platform4);
 
+        Gui1platform5 = document.createElement("button");
+        Gui1platform5.id = "Gui1" + "platform5"; // Set ID for referencing
+        Gui1platform5.textContent = "";
+        Gui1platform5.style.fontSize = "12px"; // Set font size
+        Gui1platform5.style.position = "absolute"; // Set position to absolute
+        Gui1platform5.style.left = "" + variables.platformX5 + "px"; // Set initial x position
+        Gui1platform5.style.top = "" + variables.platformY5 + "px"; // Set initial y position
+        Gui1platform5.style.width = "" + variables.platformW5 + "px"; // Set width
+        Gui1platform5.style.height = "" + variables.platformH5 + "px"; // Set height
+        Gui1.appendChild(Gui1platform5);
 
+        Gui1Player = document.createElement("button");
+        Gui1Player.id = "Gui1" + "Player"; // Set ID for referencing
+        Gui1Player.textContent = "Player";
+        Gui1Player.style.fontSize = "12px"; // Set font size
+        Gui1Player.style.position = "absolute"; // Set position to absolute
+        Gui1Player.style.left = "" + variables.PlayerX + "px"; // Set initial x position
+        Gui1Player.style.top = "" + variables.PlayerY + "px"; // Set initial y position
+        Gui1Player.style.width = "" + variables.PlayerW + "px"; // Set width
+        Gui1Player.style.height = "" + variables.PlayerH + "px"; // Set height
+        Gui1.appendChild(Gui1Player);
 
-Gui1roomText = document.createElement("div")
-Gui1roomText.id = "Gui1" + "roomText"; // Set ID for referencing
-Gui1roomText.textContent = "" + variables.room + ""
-Gui1roomText.style.color = "#white"
-Gui1roomText.style.fontSize = "20px"; // Set font size
-Gui1roomText.style.position = "absolute"; // Set position to absolute
-Gui1roomText.style.left = "5px"; // Set initial x position
-Gui1roomText.style.top = "5px"; // Set initial y position
-Gui1roomText.style.width = "" + variables.winW + "px"; // Set width
-Gui1roomText.style.height = "30px"; // Set height
-Gui1.appendChild(Gui1roomText)
+        SetTimer(code, 1);
 
+        SetTimer(gravity, 1);
 
+        return;
 
+        async function gravity(A_GuiControl) {
+          if (!(await Collision())) {
+            if (!((await GetKeyState("ArrowUp", "D")) || (await GetKeyState("ArrowDown", "D")))) {
+              variables.PlayerY = variables.PlayerY + 2;
+            }
 
+            GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
+          }
+        }
 
-variables.PlayerX =  80 - 25;
+        async function code(A_GuiControl) {
+          if (!(await Collision())) {
+            if ((await GetKeyState("ArrowUp", "D")) && !(await Collision())) {
+              if (variables.jump == 1) {
+                variables.jump = 0;
 
+                for (/* Normal Loop */ variables.A_Index1 = 1; variables.A_Index1 <= 20; variables.A_Index1++) {
+                  if (!(await Collision())) {
+                    await sleep(10);
 
-variables.PlayerY =  variables.winH - 100 - 50 - 25;
+                    variables.PlayerY = variables.PlayerY - (variables.Speed + variables.acceleration + variables.A_Index1);
 
+                    if (!(variables.acceleration > variables.accelerationMax)) {
+                      variables.acceleration = variables.acceleration + variables.accelerationNum;
+                    }
 
-variables.PlayerW =  50;
+                    GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
+                  } else {
+                    variables.PlayerY = variables.PlayerY + 10;
 
+                    GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
 
-variables.PlayerH =  50;
+                    break;
+                  }
+                }
 
+                //OutputDebug, moving
+              } else {
+                variables.PlayerY = variables.PlayerY + 2;
 
+                GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
+              }
+            }
 
+            if ((await GetKeyState("ArrowDown", "D")) && !(await Collision())) {
+              variables.PlayerY = variables.PlayerY + (variables.Speed + variables.acceleration);
 
-variables.Speed =  2;
+              if (!(variables.acceleration > variables.accelerationMax)) {
+                variables.acceleration = variables.acceleration + variables.accelerationNum;
+              }
 
+              GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
 
-variables.acceleration =  0;
+              //OutputDebug, moving
+            }
 
+            if ((await GetKeyState("ArrowLeft", "D")) && !(await Collision())) {
+              variables.PlayerX = variables.PlayerX - (variables.Speed + variables.acceleration);
 
-variables.accelerationMax =  3;
+              if (!(variables.acceleration > variables.accelerationMax)) {
+                variables.acceleration = variables.acceleration + variables.accelerationNum;
+              }
 
+              GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
 
-variables.accelerationNum =  0.008;
+              //OutputDebug, moving
+            }
 
+            if ((await GetKeyState("ArrowRight", "D")) && !(await Collision())) {
+              variables.PlayerX = variables.PlayerX + (variables.Speed + variables.acceleration);
 
+              if (!(variables.acceleration > variables.accelerationMax)) {
+                variables.acceleration = variables.acceleration + variables.accelerationNum;
+              }
 
+              GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
 
-variables.jump =  0;
+              //OutputDebug, moving
+            }
 
+            if ((await GetKeyState("ArrowUp", "U")) && (await GetKeyState("ArrowDown", "U")) && (await GetKeyState("ArrowLeft", "U")) && (await GetKeyState("ArrowRight", "U"))) {
+              // not moving
 
+              //OutputDebug, no moving
 
+              variables.acceleration = 0;
+            }
+          }
+        }
 
-variables.platforms =  5;
+        async function Collision() {
+          if (variables.PlayerX <= 1) {
+            variables.PlayerX = variables.PlayerX + 1;
 
+            GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
 
+            return true;
+          }
 
+          if (variables.PlayerX >= variables.winW - 51) {
+            if (variables.PlayerY > variables.platformY5) {
+              SetTimer(code, "Off");
 
-variables.platformX1 =  10;
+              SetTimer(gravity, "Off");
 
+              Gui2Static2 = document.createElement("div");
+              Gui2Static2.id = "Gui2" + "Static" + "2"; // Set ID for referencing
+              Gui2Static2.textContent = "You Loose";
+              Gui2Static2.style.color = "#white";
+              Gui2Static2.style.fontSize = "30px"; // Set font size
+              Gui2Static2.style.position = "absolute"; // Set position to absolute
+              Gui2Static2.style.left = "180px"; // Set initial x position
+              Gui2Static2.style.top = "100px"; // Set initial y position
+              Gui2Static2.style.width = "200px"; // Set width
+              Gui2Static2.style.height = "50px"; // Set height
+              Gui2.appendChild(Gui2Static2);
 
-variables.platformY1 =  variables.winH - 100;
+              Gui2.style.position = "absolute";
+              Gui2.style.width = "500px"; // Set the width
+              Gui2.style.height = "250px"; // Set the height
+              Gui2.style.backgroundColor = "#420606";
+              Gui2.style.color = "white";
+              Gui2.style.fontSize = "15px";
+              Gui2.style.padding = "0px";
+              Gui2.style.border = "2px solid white";
 
+              // Calculate center position
+              Gui2.style.left = (window.innerWidth - parseInt(Gui2.style.width)) / 2 + "px";
+              Gui2.style.top = (window.innerHeight - parseInt(Gui2.style.height)) / 2 + "px";
 
-variables.platformW1 =  150;
+              document.body.appendChild(Gui2); // Append the GUI window to the body
 
+              return;
+            }
 
-variables.platformH1 =  10;
+            variables.platformYran = getRandomNumber(101, 250);
 
+            variables.platformX2 = 450;
 
+            variables.platformY2 = variables.winH - variables.platformYran;
 
+            variables.platformW2 = 150;
 
-variables.platformYran = getRandomNumber(101, 250)
+            variables.platformH2 = 10;
 
+            variables.platformYran = getRandomNumber(130, 270);
 
+            variables.platformX3 = 800;
 
-variables.platformX2 =  450;
+            variables.platformY3 = variables.winH - variables.platformYran;
 
+            variables.platformW3 = 150;
 
-variables.platformY2 =  variables.winH - variables.platformYran;
+            variables.platformH3 = 10;
 
+            variables.platformYran = getRandomNumber(160, 300);
 
-variables.platformW2 =  150;
+            variables.platformX4 = 1200;
 
+            variables.platformY4 = variables.winH - variables.platformYran;
 
-variables.platformH2 =  10;
+            variables.platformW4 = 150;
 
+            variables.platformH4 = 10;
 
+            variables.platformYran = getRandomNumber(190, 330);
 
+            variables.platformX5 = 1500;
 
-variables.platformYran = getRandomNumber(130, 270)
+            variables.platformY5 = variables.winH - variables.platformYran;
 
+            variables.platformW5 = 150;
 
+            variables.platformH5 = 10;
 
-variables.platformX3 =  800;
+            GuiControl("move", "Gui1platform2", variables.platformX2, variables.platformY2, variables.platformW2, variables.platformH2);
 
+            GuiControl("move", "Gui1platform3", variables.platformX3, variables.platformY3, variables.platformW3, variables.platformH3);
 
-variables.platformY3 =  variables.winH - variables.platformYran;
+            GuiControl("move", "Gui1platform4", variables.platformX4, variables.platformY4, variables.platformW4, variables.platformH4);
 
+            GuiControl("move", "Gui1platform5", variables.platformX5, variables.platformY5, variables.platformW5, variables.platformH5);
 
-variables.platformW3 =  150;
+            variables.roomNum++;
 
+            variables.room = "Room " + variables.roomNum;
 
-variables.platformH3 =  10;
+            GuiControl("text", "Gui1roomText", variables.room);
 
+            variables.acceleration = 0;
 
+            variables.PlayerX = 80 - 25;
 
+            variables.PlayerY = variables.winH - 100 - 50 - 25;
 
-variables.platformYran = getRandomNumber(160, 300)
+            GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
 
+            return true;
+          }
 
+          if (variables.PlayerY >= variables.winH - 51) {
+            SetTimer(code, "Off");
 
-variables.platformX4 =  1200;
+            SetTimer(gravity, "Off");
 
+            Gui2Static3 = document.createElement("div");
+            Gui2Static3.id = "Gui2" + "Static" + "3"; // Set ID for referencing
+            Gui2Static3.textContent = "You Loose";
+            Gui2Static3.style.color = "#white";
+            Gui2Static3.style.fontSize = "30px"; // Set font size
+            Gui2Static3.style.position = "absolute"; // Set position to absolute
+            Gui2Static3.style.left = "180px"; // Set initial x position
+            Gui2Static3.style.top = "100px"; // Set initial y position
+            Gui2Static3.style.width = "200px"; // Set width
+            Gui2Static3.style.height = "50px"; // Set height
+            Gui2.appendChild(Gui2Static3);
 
-variables.platformY4 =  variables.winH - variables.platformYran;
+            Gui2.style.position = "absolute";
+            Gui2.style.width = "500px"; // Set the width
+            Gui2.style.height = "250px"; // Set the height
+            Gui2.style.backgroundColor = "#420606";
+            Gui2.style.color = "white";
+            Gui2.style.fontSize = "15px";
+            Gui2.style.padding = "0px";
+            Gui2.style.border = "2px solid white";
 
+            // Calculate center position
+            Gui2.style.left = (window.innerWidth - parseInt(Gui2.style.width)) / 2 + "px";
+            Gui2.style.top = (window.innerHeight - parseInt(Gui2.style.height)) / 2 + "px";
 
-variables.platformW4 =  150;
+            document.body.appendChild(Gui2); // Append the GUI window to the body
 
+            return;
 
-variables.platformH4 =  10;
+            GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
 
+            return true;
+          }
 
+          if (variables.PlayerY <= 1) {
+            variables.PlayerY = variables.PlayerY + 1;
 
+            GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
 
-variables.platformYran = getRandomNumber(190, 330)
+            return true;
+          }
 
+          // Loop through each platform and check for collision
 
+          for (/* Normal Loop */ variables.A_Index2 = 1; variables.A_Index2 <= variables.platforms; variables.A_Index2++) {
+            variables.platformX = variables["platformX" + variables.A_Index2];
 
-variables.platformX5 =  1500;
+            variables.platformY = variables["platformY" + variables.A_Index2];
 
+            variables.platformW = variables["platformW" + variables.A_Index2];
 
-variables.platformY5 =  variables.winH - variables.platformYran;
+            variables.platformH = variables["platformH" + variables.A_Index2];
 
+            if (variables.PlayerY >= variables.platformY - variables.PlayerH && variables.PlayerY <= variables.platformY + variables.platformH && variables.PlayerX + variables.PlayerW >= variables.platformX && variables.PlayerX <= variables.platformX + variables.platformW) {
+              variables.PlayerY = variables.PlayerY - 1;
 
-variables.platformW5 =  150;
+              variables.jump = 1;
 
+              GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY);
 
-variables.platformH5 =  10;
+              return true;
+            }
+          }
 
+          // if no Collision then return false
 
-
-
-
-
-
-
-
-
-Gui1platform1 = document.createElement("button")
-Gui1platform1.id = "Gui1" + "platform1"; // Set ID for referencing
-Gui1platform1.textContent = "";
-Gui1platform1.style.fontSize = "12px"; // Set font size
-Gui1platform1.style.position = "absolute"; // Set position to absolute
-Gui1platform1.style.left = "" + variables.platformX1 + "px"; // Set initial x position
-Gui1platform1.style.top = "" + variables.platformY1 + "px"; // Set initial y position
-Gui1platform1.style.width = "" + variables.platformW1 + "px"; // Set width
-Gui1platform1.style.height = "" + variables.platformH1 + "px"; // Set height
-Gui1.appendChild(Gui1platform1)
-
-
-
-
-Gui1platform2 = document.createElement("button")
-Gui1platform2.id = "Gui1" + "platform2"; // Set ID for referencing
-Gui1platform2.textContent = "";
-Gui1platform2.style.fontSize = "12px"; // Set font size
-Gui1platform2.style.position = "absolute"; // Set position to absolute
-Gui1platform2.style.left = "" + variables.platformX2 + "px"; // Set initial x position
-Gui1platform2.style.top = "" + variables.platformY2 + "px"; // Set initial y position
-Gui1platform2.style.width = "" + variables.platformW2 + "px"; // Set width
-Gui1platform2.style.height = "" + variables.platformH2 + "px"; // Set height
-Gui1.appendChild(Gui1platform2)
-
-
-
-
-Gui1platform3 = document.createElement("button")
-Gui1platform3.id = "Gui1" + "platform3"; // Set ID for referencing
-Gui1platform3.textContent = "";
-Gui1platform3.style.fontSize = "12px"; // Set font size
-Gui1platform3.style.position = "absolute"; // Set position to absolute
-Gui1platform3.style.left = "" + variables.platformX3 + "px"; // Set initial x position
-Gui1platform3.style.top = "" + variables.platformY3 + "px"; // Set initial y position
-Gui1platform3.style.width = "" + variables.platformW3 + "px"; // Set width
-Gui1platform3.style.height = "" + variables.platformH3 + "px"; // Set height
-Gui1.appendChild(Gui1platform3)
-
-
-
-
-Gui1platform4 = document.createElement("button")
-Gui1platform4.id = "Gui1" + "platform4"; // Set ID for referencing
-Gui1platform4.textContent = "";
-Gui1platform4.style.fontSize = "12px"; // Set font size
-Gui1platform4.style.position = "absolute"; // Set position to absolute
-Gui1platform4.style.left = "" + variables.platformX4 + "px"; // Set initial x position
-Gui1platform4.style.top = "" + variables.platformY4 + "px"; // Set initial y position
-Gui1platform4.style.width = "" + variables.platformW4 + "px"; // Set width
-Gui1platform4.style.height = "" + variables.platformH4 + "px"; // Set height
-Gui1.appendChild(Gui1platform4)
-
-
-
-
-Gui1platform5 = document.createElement("button")
-Gui1platform5.id = "Gui1" + "platform5"; // Set ID for referencing
-Gui1platform5.textContent = "";
-Gui1platform5.style.fontSize = "12px"; // Set font size
-Gui1platform5.style.position = "absolute"; // Set position to absolute
-Gui1platform5.style.left = "" + variables.platformX5 + "px"; // Set initial x position
-Gui1platform5.style.top = "" + variables.platformY5 + "px"; // Set initial y position
-Gui1platform5.style.width = "" + variables.platformW5 + "px"; // Set width
-Gui1platform5.style.height = "" + variables.platformH5 + "px"; // Set height
-Gui1.appendChild(Gui1platform5)
-
-
-
-
-
-
-
-
-Gui1Player = document.createElement("button")
-Gui1Player.id = "Gui1" + "Player"; // Set ID for referencing
-Gui1Player.textContent = "Player";
-Gui1Player.style.fontSize = "12px"; // Set font size
-Gui1Player.style.position = "absolute"; // Set position to absolute
-Gui1Player.style.left = "" + variables.PlayerX + "px"; // Set initial x position
-Gui1Player.style.top = "" + variables.PlayerY + "px"; // Set initial y position
-Gui1Player.style.width = "" + variables.PlayerW + "px"; // Set width
-Gui1Player.style.height = "" + variables.PlayerH + "px"; // Set height
-Gui1.appendChild(Gui1Player)
-
-
-
-SetTimer(code, 1)
-
-SetTimer(gravity, 1)
-
-return
-
-
-
-async function gravity(A_GuiControl)
-{
-
-
-
-if (!( await Collision ( ) ))
-
-{
-
-
-
-if (!( ( await GetKeyState ( "ArrowUp", "D" )  ||  await GetKeyState ( "ArrowDown", "D" ) ) ))
-
-{
-
-variables.PlayerY =  variables.PlayerY + 2;
-
-
-}
-
-
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-}
-
-}
-
-
-
-
-
-async function code(A_GuiControl)
-{
-
-
-
-if (!( await Collision ( ) ))
-
-{
-
-
-
-
-
-if ( ( await GetKeyState ( "ArrowUp", "D" ) ) && ! ( await Collision ( ) ) )
-
-{
-
-if ( variables.jump == 1 )
-
-{
-
-variables.jump =  0;
-
-
-
-for (/* Normal Loop */ variables.A_Index1 = 1; variables.A_Index1 <= 20; variables.A_Index1++)
-
-{
-
-if (!( await Collision ( ) ))
-
-{
-
-await sleep(10)
-
-variables.PlayerY =  variables.PlayerY -  ( variables.Speed + variables.acceleration + variables.A_Index1 )
-
-
-if (!( variables.acceleration > variables.accelerationMax ))
-
-{
-
-variables.acceleration =  variables.acceleration + variables.accelerationNum;
-
-
-}
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-}
-
-else
-
-{
-
-variables.PlayerY =  variables.PlayerY + 10;
-
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-break
-
-}
-
-}
-
-//OutputDebug, moving
-
-}
-
-else
-
-{
-
-variables.PlayerY =  variables.PlayerY + 2;
-
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-}
-
-}
-
-if ( ( await GetKeyState ( "ArrowDown", "D" ) ) && ! ( await Collision ( ) ) )
-
-{
-
-variables.PlayerY =  variables.PlayerY +  ( variables.Speed + variables.acceleration )
-
-
-if (!( variables.acceleration > variables.accelerationMax ))
-
-{
-
-variables.acceleration =  variables.acceleration + variables.accelerationNum;
-
-
-}
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-//OutputDebug, moving
-
-}
-
-if ( ( await GetKeyState ( "ArrowLeft", "D" ) ) && ! ( await Collision ( ) ) )
-
-{
-
-variables.PlayerX =  variables.PlayerX -  ( variables.Speed + variables.acceleration )
-
-
-if (!( variables.acceleration > variables.accelerationMax ))
-
-{
-
-variables.acceleration =  variables.acceleration + variables.accelerationNum;
-
-
-}
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-//OutputDebug, moving
-
-}
-
-if ( ( await GetKeyState ( "ArrowRight", "D" ) ) && ! ( await Collision ( ) ) )
-
-{
-
-variables.PlayerX =  variables.PlayerX +  ( variables.Speed + variables.acceleration )
-
-
-if (!( variables.acceleration > variables.accelerationMax ))
-
-{
-
-variables.acceleration =  variables.acceleration + variables.accelerationNum;
-
-
-}
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-//OutputDebug, moving
-
-}
-
-if ( ( await GetKeyState ( "ArrowUp", "U" )  &&  await GetKeyState ( "ArrowDown", "U" )  &&  await GetKeyState ( "ArrowLeft", "U" )  &&  await GetKeyState ( "ArrowRight", "U" ) ) )
-
-{
-
-// not moving
-
-//OutputDebug, no moving
-
-variables.acceleration =  0;
-
-
-}
-
-}
-
-
-
-
-
-}
-
-
-
-async function Collision()
-
-{
-
-
-
-
-
-
-
-
-
-if ( variables.PlayerX <= 1 )
-
-{
-
-variables.PlayerX =  variables.PlayerX + 1;
-
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-return true
-
-}
-
-if ( variables.PlayerX >= variables.winW - 51 )
-
-{
-
-
-
-
-
-if ( variables.PlayerY > variables.platformY5 )
-
-{
-
-SetTimer(code, "Off")
-
-SetTimer(gravity, "Off")
-
-
-
-
-
-Gui2Static2 = document.createElement("div")
-Gui2Static2.id = "Gui2" + "Static" + "2"; // Set ID for referencing
-Gui2Static2.textContent = "You Loose";
-Gui2Static2.style.color = "#white"
-Gui2Static2.style.fontSize = "30px"; // Set font size
-Gui2Static2.style.position = "absolute"; // Set position to absolute
-Gui2Static2.style.left = "180px"; // Set initial x position
-Gui2Static2.style.top = "100px"; // Set initial y position
-Gui2Static2.style.width = "200px"; // Set width
-Gui2Static2.style.height = "50px"; // Set height
-Gui2.appendChild(Gui2Static2)
-
-
-
-
-Gui2.style.position = "absolute";
-Gui2.style.width = "500px"; // Set the width
-Gui2.style.height = "250px"; // Set the height
-Gui2.style.backgroundColor = "#420606";
-Gui2.style.color = "white";
-Gui2.style.fontSize = "15px";
-Gui2.style.padding = "0px";
-Gui2.style.border = "2px solid white";
-
-// Calculate center position
-Gui2.style.left = (window.innerWidth - parseInt(Gui2.style.width)) / 2 + "px";
-Gui2.style.top = (window.innerHeight - parseInt(Gui2.style.height)) / 2 + "px";
-
-
-
-
-
-
-document.body.appendChild(Gui2) // Append the GUI window to the body
-
-
-return
-
-}
-
-
-
-variables.platformYran = getRandomNumber(101, 250)
-
-
-
-variables.platformX2 =  450;
-
-
-variables.platformY2 =  variables.winH - variables.platformYran;
-
-
-variables.platformW2 =  150;
-
-
-variables.platformH2 =  10;
-
-
-
-
-variables.platformYran = getRandomNumber(130, 270)
-
-
-
-variables.platformX3 =  800;
-
-
-variables.platformY3 =  variables.winH - variables.platformYran;
-
-
-variables.platformW3 =  150;
-
-
-variables.platformH3 =  10;
-
-
-
-
-variables.platformYran = getRandomNumber(160, 300)
-
-
-
-variables.platformX4 =  1200;
-
-
-variables.platformY4 =  variables.winH - variables.platformYran;
-
-
-variables.platformW4 =  150;
-
-
-variables.platformH4 =  10;
-
-
-
-
-variables.platformYran = getRandomNumber(190, 330)
-
-
-
-variables.platformX5 =  1500;
-
-
-variables.platformY5 =  variables.winH - variables.platformYran;
-
-
-variables.platformW5 =  150;
-
-
-variables.platformH5 =  10;
-
-
-
-
-
-
-GuiControl("move", "Gui1platform2", variables.platformX2, variables.platformY2, variables.platformW2, variables.platformH2)
-
-GuiControl("move", "Gui1platform3", variables.platformX3, variables.platformY3, variables.platformW3, variables.platformH3)
-
-GuiControl("move", "Gui1platform4", variables.platformX4, variables.platformY4, variables.platformW4, variables.platformH4)
-
-GuiControl("move", "Gui1platform5", variables.platformX5, variables.platformY5, variables.platformW5, variables.platformH5)
-
-
-
-
-
-
-
-variables.roomNum++
-
-variables.room =  "Room " + variables.roomNum;
-
-
-GuiControl("text", "Gui1roomText", variables.room)
-
-variables.acceleration =  0;
-
-
-variables.PlayerX =  80 - 25;
-
-
-variables.PlayerY =  variables.winH - 100 - 50 - 25;
-
-
-
-
-
-
-
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-return true
-
-}
-
-if ( variables.PlayerY >= variables.winH - 51 )
-
-{
-
-
-
-SetTimer(code, "Off")
-
-SetTimer(gravity, "Off")
-
-
-
-
-
-Gui2Static3 = document.createElement("div")
-Gui2Static3.id = "Gui2" + "Static" + "3"; // Set ID for referencing
-Gui2Static3.textContent = "You Loose";
-Gui2Static3.style.color = "#white"
-Gui2Static3.style.fontSize = "30px"; // Set font size
-Gui2Static3.style.position = "absolute"; // Set position to absolute
-Gui2Static3.style.left = "180px"; // Set initial x position
-Gui2Static3.style.top = "100px"; // Set initial y position
-Gui2Static3.style.width = "200px"; // Set width
-Gui2Static3.style.height = "50px"; // Set height
-Gui2.appendChild(Gui2Static3)
-
-
-
-
-Gui2.style.position = "absolute";
-Gui2.style.width = "500px"; // Set the width
-Gui2.style.height = "250px"; // Set the height
-Gui2.style.backgroundColor = "#420606";
-Gui2.style.color = "white";
-Gui2.style.fontSize = "15px";
-Gui2.style.padding = "0px";
-Gui2.style.border = "2px solid white";
-
-// Calculate center position
-Gui2.style.left = (window.innerWidth - parseInt(Gui2.style.width)) / 2 + "px";
-Gui2.style.top = (window.innerHeight - parseInt(Gui2.style.height)) / 2 + "px";
-
-
-
-
-
-
-document.body.appendChild(Gui2) // Append the GUI window to the body
-
-
-return
-
-
-
-
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-return true
-
-}
-
-if ( variables.PlayerY <= 1 )
-
-{
-
-variables.PlayerY =  variables.PlayerY + 1;
-
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-return true
-
-}
-
-
-
-// Loop through each platform and check for collision
-
-
-for (/* Normal Loop */ variables.A_Index2 = 1; variables.A_Index2 <= variables.platforms; variables.A_Index2++)
-
-{
-
-variables.platformX =  variables["platformX" + variables.A_Index2];
-
-
-variables.platformY =  variables["platformY" + variables.A_Index2];
-
-
-variables.platformW =  variables["platformW" + variables.A_Index2];
-
-
-variables.platformH =  variables["platformH" + variables.A_Index2];
-
-
-
-
-if ( ( variables.PlayerY >= variables.platformY - variables.PlayerH  &&  variables.PlayerY <= variables.platformY + variables.platformH  &&  variables.PlayerX + variables.PlayerW >= variables.platformX  &&  variables.PlayerX <= variables.platformX + variables.platformW ) )
-
-{
-
-variables.PlayerY =  variables.PlayerY - 1;
-
-
-variables.jump =  1;
-
-
-GuiControl("move", "Gui1Player", variables.PlayerX, variables.PlayerY)
-
-return true
-
-}
-
-}
-
-
-
-// if no Collision then return false
-
-
-
-return false
-
-}
-
-
-
-
-
-
-
-
-
-
- }
+          return false;
+        }
+      }
 
       // Call the async function to start the script
       runScript();
