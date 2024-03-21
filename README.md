@@ -11,7 +11,7 @@ Roomfinity is a simple platformer game built with the HTH (HeavenToHell) program
 
 ## Requirements
 
-- A modern web browser (e.g., Chrome, Firefox, Safari) to run the game.
+- A modern web browser (e.g., Chrome, Firefox, Brave) to run the game.
 
 ## How to Run
 
